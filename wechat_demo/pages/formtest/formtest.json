@@ -1,0 +1,6 @@
+{
+  "disableSwipeBack": true,
+  "component": true,
+  "navigationBarTitleText": "表单",
+  "usingComponents": {}
+}

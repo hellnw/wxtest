@@ -1,0 +1,150 @@
+<!--pages/form/form.wxml-->
+<view class="ub first-box">
+  <view class="ub ub-f1 ub-ver first-main">
+    <view class="ub  first-item">
+      <view class="ub ub-ac put-left marr1">
+        <span class="colred">* </span>姓名
+      </view>
+      <view class="ub ub-ac ub-f1 uinput">
+        <input type="text" placeholder="姓名" bindinput="StuName" value="{{StuName}}"/>
+      </view>
+    </view>
+    <view class="ub first-item">
+      <view class="ub ub-ac put-left">
+        性别
+      </view>
+      <view class="ub ub-f1">
+        <radio-group class="ub ub-ac ub-f1 radio-group" bindchange="radioChange">
+          <label class="ub ub-ac ub-f1 radio" wx:for="{{items}}">
+            <radio value='{"name":"{{item.name}}","checkval":"{{item.value}}"}' checked="{{item.checked}}" />{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="ub  first-item">
+      <view class="ub ub-ac put-left marr1">
+        <span class="colred">* </span>身份证号
+      </view>
+      <view class="ub ub-ac ub-f1 uinput">
+        <input type="idcard" placeholder="请输入身份证号" bindinput="IdCard" value="{{IdCard}}"/>
+      </view>
+    </view>
+    <view class="ub  first-item">
+      <view class="ub ub-ac put-left marr1">
+        学号
+      </view>
+      <view class="ub ub-ac ub-f1 uinput">
+        <input type="text" placeholder="请输入学号" bindinput="StuNumber" value="{{StuNumber}}"/>
+      </view>
+    </view>
+    <view class="ub  first-item">
+			<view class="ub ub-ac put-left marr1">
+				联系电话
+			</view>
+			<view class="ub ub-ac ub-f1 uinput">
+				<input type="number" placeholder="请输入联系电话" bindinput="LinkTel" value="{{LinkTel}}"/>
+			</view>
+		</view>
+		<view class="ub  first-item pagebox" id="company">
+			<view class="ub ub-ac put-left marr1">
+				学校名称
+			</view>
+			<view class="ub ub-f1" bindtap='gogetSaler'>
+				<view class="ub ub-ac ub-f1 ub-pe sc-text">
+					{{SalerName}}
+				</view>
+				<view class="ub ub-ac righthead">
+				</view>
+			</view>
+		</view>
+		<view class="ub  first-item">
+			<view class="ub ub-ac put-left marr1">
+				学历层次
+			</view>
+			<view class="ub ub-f1">
+				<view class="ub ub-ac ub-pe ub-f1 uinput sc-text companytxt">
+					<picker class="ub ub-f1 ub-pe picker" bindchange="bindEduLevel" value="{{EduLevelIndex}}" range="{{EduLevelArr}}">
+						<view class="ub ub-f1 ub-pe picker">
+							<view class="ub ub-f1 ub-pe" wx:if="{{EduLevelIndex}}">
+								{{EduLevelArr[EduLevelIndex]}}
+							</view>
+							<view class="ub ub-f1 ub-ac ub-pe" wx:else>
+								请选择
+							</view>
+							<view class="ub ub-ac righthead">
+							</view>
+						</view>
+					</picker>
+				</view>
+				
+			</view>
+		</view>
+		<view class="ub  first-item">
+			<view class="ub ub-ac put-left marr1">
+				院校类别
+			</view>
+			<view class="ub ub-f1">
+				<view class="ub ub-ac ub-pe ub-f1 uinput sc-text companytxt">
+					<picker class="ub ub-f1 ub-pe picker" bindchange="bindBusinessScope" value="{{BusinessScopeidx}}" range="{{BusinessScope}}">
+						<view class="ub ub-f1 ub-pe picker">
+							<view class="ub ub-f1 ub-ac ub-pe" wx:if="{{BusinessScopeidx}}">
+								{{BusinessScope[BusinessScopeidx]}}
+							</view>
+							<view class="ub ub-ac ub-pe" wx:else>
+								请选择
+							</view>
+							<view class="ub ub-ac righthead">
+							</view>
+						</view>
+					</picker>
+				</view>
+				
+			</view>
+		</view>
+		<view class="ub first-item">
+			<view class="ub ub-ac put-left">
+				<span class="colred">* </span>邮寄地址
+			</view>
+			<view class="ub ub-ac ub-f1 uinput">
+				<input type="text" placeholder="请输入邮寄地址" bindinput="Address" value="{{Address}}"/>
+			</view>
+		</view>
+    <view class="ub  first-item">
+			<view class="ub ub-ac put-left marr1">
+				收件人
+			</view>
+			<view class="ub ub-ac ub-f1 uinput">
+				<input type="text" placeholder="收件人" bindinput="Linkman" value="{{Linkman}}"/>
+			</view>
+		</view>
+    <view class="ub  first-item checkstart">
+			<view class="ub ub-ac put-left marr1">
+				电话
+			</view>
+			<view class="ub ub-ac ub-f1 uinput">
+				<input type="number" placeholder="请输入电话" bindinput="ReceivePhone" value="{{ReceivePhone}}"/>
+			</view>
+		</view>
+		<view class="ub first-item">
+			<view class="ub ub-ac put-left">
+				备注
+			</view>
+			<view class="ub ub-ac ub-f1 uinput">
+				<input type="text" placeholder="请输入备注" bindinput="Comment" value="{{Commenttxt}}"/>
+			</view>
+		</view>
+		<view class="ub second-box">
+			<view class="ub ub-ac put-left">
+				头像上传
+			</view>
+      <view class="ub ub-ac header-main">
+      <image src="{{tempFilePaths}}" bindtap='chooseImg' style='width:200rpx;height:220rpx;'></image>
+      </view>
+		</view>
+		<view class="ub btn_box">
+			<view class="ub ub-f1 ub-ac ub-pc main_btn sendbtn" bindtap='AdddTerminalStudent'>
+				支付提交
+			</view>
+		</view>
+	</view>
+</view>

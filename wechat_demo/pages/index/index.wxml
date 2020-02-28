@@ -1,0 +1,8 @@
+<view class="index">
+  <view class="index-hd" id='card_index'>
+    <image src="{{tempFilePaths}}" mode="aspecFill" mode="widthFix" style="width: 100%; height:100%" bindtap='choose_photo'/>
+    <button type='primary' size='default' bindtap='choose_photo' class='upload_btn'>拍照上传</button>
+    <button type='default' size='default' bindtap='goadd' class='upload_btn'>下一步</button>
+  </view>
+  
+</view>
